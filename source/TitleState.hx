@@ -15,8 +15,8 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxGradient;
 import flixel.util.FlxTimer;
-import flixel.addons.display.FlxBackdrop;
 import openfl.Assets;
+import flixel.addons.display.FlxBackdrop;
 
 using StringTools;
 
@@ -29,6 +29,7 @@ class TitleState extends MusicBeatState
 	static var initialized:Bool = false;
 
 	var blackScreen:FlxSprite;
+	var gradientBar:FlxSprite = new FlxSprite(0,0).makeGraphic(FlxG.width, 1, 0xFFC30085);
 	var credGroup:FlxGroup;
 	var credTextShit:Alphabet;
 	var textGroup:FlxGroup;
@@ -36,9 +37,9 @@ class TitleState extends MusicBeatState
 
 	var Timer:Float = 0;
 	var curWacky:Array<String> = [];
-	
-	var BgScroll:FlxBackdrop;
-	var Bg:FlxSprite;
+
+	var bgScroll:FlxBackdrop;
+	var bg:FlxSprite;
 
 	var wackyImage:FlxSprite;
 
@@ -213,13 +214,20 @@ class TitleState extends MusicBeatState
 
 		blackScreen = new FlxSprite().makeGraphic(FlxG.width, FlxG.height, FlxColor.BLACK);
 		credGroup.add(blackScreen);
-		
-	bgScroll = new FlxBackdrop(Paths.image('titleMenu/TitleScroll'), 0, 0, true, false);
-	bgScroll.velocity.set(100, 0); //change the titleScroll to the image you want to use
-	bgScroll.screenCenter(); //also set the speed as fast or slow as you want, just don't modify the 0
-	bgScroll.setGraphicSize(Std.int(bgScroll.width * 1.1));
-	credGroup.add(bgScroll); //the size is optional my image needs to be bigger if your's not then don't do so
 
+		bgScroll = new FlxBackdrop(Paths.image('titleMenu/titleSCROLL'), 0, 0, true, false);
+		bgScroll.velocity.set(100, 0); //change the titleSCROLL to the image you want to use
+		bgScroll.screenCenter(); //also set the speed as fast or slow as you want, just don't modify the 0
+		bgScroll.setGraphicSize(Std.int(bgScroll.width * 1.1));
+		bgScroll.antialiasing = ClientPrefs.globalAntialiasing;
+		credGroup.add(bgScroll);  //the size is optional my image needs to be bigger if your's not then don't do so
+
+		/*gradientBar = FlxGradient.createGradientFlxSprite(Math.round(FlxG.width), 512, [0x00060A4D, 0xAAD55E82], 2, true); 
+		gradientBar.y = FlxG.height - gradientBar.height;
+		gradientBar.scale.y = 0;
+		gradientBar.updateHitbox();
+		add(gradientBar);
+		FlxTween.tween(gradientBar, {'scale.y': 1.3}, 8, {ease: FlxEase.quadInOut}); // long gradient tween*/
 
 		credTextShit = new Alphabet(0, 0, "", true);
 		credTextShit.screenCenter();
@@ -270,8 +278,8 @@ class TitleState extends MusicBeatState
 		// FlxG.watch.addQuick('amp', FlxG.sound.music.amplitude);
 
 		Timer += 1;
-		gradientBar.updateHitbox();
-		gradientBar.y = FlxG.height - gradientBar.height;
+		/*gradientBar.updateHitbox();
+		gradientBar.y = FlxG.height - gradientBar.height;*/
 
 		if (FlxG.keys.justPressed.F)
 		{
