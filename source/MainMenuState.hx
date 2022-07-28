@@ -36,6 +36,8 @@ class MainMenuState extends MusicBeatState
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
 	var camFollowPos:FlxObject;
+	
+	var char:FlxSprite;
 
 	var storybotao:FlxUIButton;
 
@@ -149,13 +151,13 @@ class MainMenuState extends MusicBeatState
 		for (i in 0...optionShit.length)
 		{
 			var offset:Float = 108 - (Math.max(optionShit.length, 4) - 4) * 80;
-			var menuItem:FlxSprite = new FlxSprite(0, (i * 140)  + offset);
+			var menuItem:FlxSprite = new FlxSprite(100, (i * 140)  + offset);
 			menuItem.frames = Paths.getSparrowAtlas('mainmenu/menu_' + optionShit[i]);
 			menuItem.animation.addByPrefix('idle', optionShit[i] + " basic", 24);
 			menuItem.animation.addByPrefix('selected', optionShit[i] + " white", 24);
 			menuItem.animation.play('idle');
 			menuItem.ID = i;
-			menuItem.screenCenter(X);
+			//menuItem.screenCenter(X);
 			menuItems.add(menuItem);
 			var scr:Float = (optionShit.length - 4) * 0.135;
 			if(optionShit.length < 6) scr = 0;
@@ -209,6 +211,19 @@ class MainMenuState extends MusicBeatState
 		#end
 
 		super.create();
+	
+	 switch (FlxG.random.int(1, 1))
+            {
+	          case 1:
+			char = new FlxSprite(820, 170).loadGraphic(Paths.image('mainmenu/bf_menu'));//put your cords and image here
+			char.frames = Paths.getSparrowAtlas('mainmenu/bf_menu');//here put the name of the xml
+			char.animation.addByPrefix('idleR', 'bf idle', 24, true);//on 'idle normal' change it to your xml one
+			char.animation.play('idleR');//you can rename the anim however you want to
+			char.scrollFactor.set();
+			char.antialiasing = ClientPrefs.globalAntialiasing;
+			add(char);
+   }
+  
 	}
 
 	#if ACHIEVEMENTS_ALLOWED
@@ -296,7 +311,7 @@ class MainMenuState extends MusicBeatState
 
 		menuItems.forEach(function(spr:FlxSprite)
 		{
-			spr.screenCenter(X);
+			//spr.screenCenter(X);
 		});
 	}
 
