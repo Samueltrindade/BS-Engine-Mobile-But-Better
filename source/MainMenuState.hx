@@ -31,7 +31,7 @@ class MainMenuState extends MusicBeatState
 	private var camGame:FlxCamera;
 	private var camAchievement:FlxCamera;
 	
-	var optionShit:Array<String> = ['story_mode', 'freeplay', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if desktop 'donate', #end 'options'];
+	var optionShit:Array<String> = ['story_mode', 'freeplay', #if ACHIEVEMENTS_ALLOWED 'awards', #end 'credits', #if desktop 'donate', #end 'options', 'silver_discord', 'bs_discord'];
 
 	var magenta:FlxSprite;
 	var camFollow:FlxObject;
@@ -260,6 +260,14 @@ class MainMenuState extends MusicBeatState
 				{
 					CoolUtil.browserLoad('https://ninja-muffin24.itch.io/funkin');
 				}
+				else if (optionShit[curSelected] == 'silver_discord')
+					{
+						CoolUtil.browserLoad('https://discord.gg/y8WR4wCnbk');
+					}
+				else if (optionShit[curSelected] == 'bs_discord')
+					{
+						CoolUtil.browserLoad('https://discord.gg/F4N9FHHya3');
+					}
 				else
 				{
 					FlxG.sound.play(Paths.sound('confirmMenu'));
