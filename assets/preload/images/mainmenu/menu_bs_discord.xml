@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="menu_bs_discord.png" width="1052" height="105">
+  <SubTexture name="bs_discord basic0000" x="0" y="0"  width="526" height="105" frameX="-13" frameY="-11" frameWidth="615" frameHeight="122"/>
+  <SubTexture name="bs_discord white0000" x="526" y="0"  width="526" height="105" frameX="-13" frameY="-36" frameWidth="796" frameHeight="173"/>
+</TextureAtlas>

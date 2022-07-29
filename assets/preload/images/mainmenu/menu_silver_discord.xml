@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Created with Free texture packer v0.6.7 http://free-tex-packer.com
+-->
+<TextureAtlas imagePath="menu_silver_discord.png" width="1307" height="108">
+  <SubTexture name="silver_discord basic0000" x="0" y="0"  width="571" height="76" frameX="-24" frameY="-20" frameWidth="615" frameHeight="122"/>
+  <SubTexture name="silver_discord white0000" x="571" y="0"  width="736" height="108" frameX="-13" frameY="-33" frameWidth="796" frameHeight="173"/>
+</TextureAtlas>
